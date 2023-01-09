@@ -61,11 +61,11 @@ namespace QRCodeNewScanner
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(158, 627);
+            this.label2.Location = new System.Drawing.Point(445, 107);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 15);
+            this.label2.Size = new System.Drawing.Size(89, 15);
             this.label2.TabIndex = 2;
-            this.label2.Text = "label2";
+            this.label2.Text = "Decryption Text";
             // 
             // pictureBox1
             // 
@@ -78,7 +78,8 @@ namespace QRCodeNewScanner
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(448, 106);
+            this.button1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button1.Location = new System.Drawing.Point(572, 55);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 4;
@@ -88,7 +89,8 @@ namespace QRCodeNewScanner
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(558, 106);
+            this.button2.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button2.Location = new System.Drawing.Point(674, 55);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 5;
@@ -99,10 +101,10 @@ namespace QRCodeNewScanner
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(448, 145);
+            this.textBox1.Location = new System.Drawing.Point(448, 125);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(210, 98);
+            this.textBox1.Size = new System.Drawing.Size(374, 311);
             this.textBox1.TabIndex = 6;
             // 
             // timer1
@@ -114,7 +116,7 @@ namespace QRCodeNewScanner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(721, 651);
+            this.ClientSize = new System.Drawing.Size(853, 463);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);

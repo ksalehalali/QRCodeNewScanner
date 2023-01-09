@@ -46,7 +46,7 @@ namespace QRCodeNewScanner
         {
             FinalFram = new VideoCaptureDevice(CaptureDevice[comboBox1.SelectedIndex].MonikerString);
             FinalFram.NewFrame += new NewFrameEventHandler(FinalFrame_NewFrame);
-            GetQRCode();
+            //GetQRCode();
             FinalFram.Start();
         }
 
@@ -75,13 +75,28 @@ namespace QRCodeNewScanner
                     if (decoded != "")
                     {
                         textBox1.Text = decoded;
+                        Console.WriteLine($"res:-------s-------------------------------------------------------: " + decoded);
+
+                        string message = decoded;
+
+                        if (message.Contains("Routes"))
+                        {
+                            Pay($"{decoded}");
+
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Not Routes Co  === {decoded}");
+
+                        }
+
                     }
                 }
             }
             catch (Exception)
             {
 
-                throw;
+                MessageBox.Show($"Faild....!");
             }
         }
 
@@ -96,12 +111,26 @@ namespace QRCodeNewScanner
 
                 var request = new RestRequest();
                 request.AddStringBody(payload.ToString(), DataFormat.Json);
-                request.AddHeader("Authorization", "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJOYW1lIjoiOTY1OTg4MjQ1NjciLCJSb2xlIjoiVXNlciIsImV4cCI6MTY2Njg3NzAxNCwiaXNzIjoiSW52ZW50b3J5QXV0aGVudGljYXRpb25TZXJ2ZXIiLCJhdWQiOiJJbnZlbnRvcnlTZXJ2aWNlUG90bWFuQ2xpZW50In0.T0yavhTrTVtQGjTPFCsooWw3i4sCoefgnSojqqKzgLY");
+                request.AddHeader("Authorization", "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJOYW1lIjoiOTY1OTg4MjQ1NjciLCJSb2xlIjoiVXNlciIsImV4cCI6MTY2NzExODk1MSwiaXNzIjoiSW52ZW50b3J5QXV0aGVudGljYXRpb25TZXJ2ZXIiLCJhdWQiOiJJbnZlbnRvcnlTZXJ2aWNlUG90bWFuQ2xpZW50In0.tLpuscmhxHTuSxQwQFDO1oG0fQH3buuLvdjhZRDpIuM");
                 var result = client.PostAsync(request).Result;
 
                 Console.WriteLine($"res:: " + result.Content);
+                MessageBox.Show($"res === { result.Content}");
+                JObject json = JObject.Parse(result.Content);
 
-                //Pay($"{result.Content}");
+                string message = (string)json["description"];
+
+                if (message.Contains("Routes"))
+                {
+                    Pay($"{json["description"]}");
+
+                }
+                else
+                {
+                    MessageBox.Show($"Not Routes Co  === { result.Content}");
+
+                }
+
 
             }
 
@@ -114,17 +143,36 @@ namespace QRCodeNewScanner
                 var payload = new JObject();
                 payload.Add("api_key", "$FhlF]3;.OIic&{>H;_DeW}|:wQ,A8");
                 payload.Add("api_secret", "Z~P7-_/i!=}?BIwAd*S67LBzUo4O^G");
+                payload.Add("Message", message);
+
                 payload.Add("Value", 0.350);
                 payload.Add("PlateNumber", "454545");
-                payload.Add("Message", message);
+                payload.Add("BusLatitude",29.11);
+                payload.Add("busLongtiude",48.22);
+               
+    
               
 
                 var request = new RestRequest();
                 request.AddStringBody(payload.ToString(), DataFormat.Json);
                // request.AddHeader("Authorization", "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJOYW1lIjoiOTY1OTg4MjQ1NjciLCJSb2xlIjoiVXNlciIsImV4cCI6MTY2Njg3NzAxNCwiaXNzIjoiSW52ZW50b3J5QXV0aGVudGljYXRpb25TZXJ2ZXIiLCJhdWQiOiJJbnZlbnRvcnlTZXJ2aWNlUG90bWFuQ2xpZW50In0.T0yavhTrTVtQGjTPFCsooWw3i4sCoefgnSojqqKzgLY");
                 var result = client.PostAsync(request).Result;
+  
 
                 Console.WriteLine($"res:: " + result.Content);
+
+                JObject json = JObject.Parse(result.Content);
+
+                if(result.StatusCode ==HttpStatusCode.OK)
+                {
+                    MessageBox.Show($"Success = {result.Content}");
+
+                }
+                else
+                {
+                    MessageBox.Show($"Faild === {result.Content}");
+
+                }
 
             }
         }

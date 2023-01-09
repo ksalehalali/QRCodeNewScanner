@@ -20,5 +20,4 @@ C:\Users\DELL\source\repos\QRCodeNewScanner\QRCodeNewScanner\obj\Debug\netcoreap
 C:\Users\DELL\source\repos\QRCodeNewScanner\QRCodeNewScanner\obj\Debug\netcoreapp3.1\QRCodeNewScanner.genruntimeconfig.cache
 C:\Users\DELL\source\repos\QRCodeNewScanner\QRCodeNewScanner\bin\Debug\netcoreapp3.1\RestSharp.dll
 C:\Users\DELL\source\repos\QRCodeNewScanner\QRCodeNewScanner\bin\Debug\netcoreapp3.1\System.Text.Json.dll
-C:\Users\DELL\source\repos\QRCodeNewScanner\QRCodeNewScanner\obj\Debug\netcoreapp3.1\QRCodeNewScanner.csproj.CopyComplete
 C:\Users\DELL\source\repos\QRCodeNewScanner\QRCodeNewScanner\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
